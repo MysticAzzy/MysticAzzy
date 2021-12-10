@@ -1,0 +1,175 @@
+
+import java.util.ArrayList;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class SlideShow extends Application {
+	//Button Data fields
+		Button nexButton;
+		Button preButton;
+		Button sliButton;
+		
+	
+  @Override // Override the start method in the Application class
+  public void start(Stage primaryStage) {
+    // Create a border pane 
+    BorderPane bPane = new BorderPane();
+    
+    bPane.setPadding(new Insets(5,5,5,5));
+
+    // Place nodes in the pane
+//    pane.setTop(new CustomPane("Top")); 
+//    pane.setRight(new CustomPane("Right"));
+    
+  
+    //TODO: create a HBOX and add the buttons to it, instead of using the CutomPane. 
+    HBox hbox = getHBox();
+    
+    bPane.setBottom(hbox);
+    
+//    pane.setLeft(new CustomPane("Left"));
+    CustomPane imgPane = new CustomPane("Center"); //create an image pane. "Center" should be the starting index 
+    bPane.setCenter(imgPane); 
+    
+    
+    // Create a scene and place it in the stage
+    Scene scene = new Scene(bPane);
+    primaryStage.setTitle("Photo Album"); // Set the stage title
+    primaryStage.setScene(scene); // Place the scene in the stage
+    primaryStage.show(); // Display the stage
+    
+  //create and register Handler
+    nexButton.setOnAction(e ->{
+  	  imgPane.nextImage();
+  	  System.out.println("Next");
+    }
+    );
+    preButton.setOnAction(e ->{
+    	imgPane.previousImage();
+    	System.out.println("Previous");
+    });
+  }//end of Start()
+  
+  
+  private HBox getHBox()
+  {
+  	HBox hBox = new HBox(15);
+  	hBox.setPadding(new Insets(15, 15, 15, 15));
+  	 this.nexButton = new Button("Next");
+  	 this.preButton = new Button("Previous");
+  	 this.sliButton = new Button("Slideshow");
+  	hBox.getChildren().add(nexButton);
+      hBox.getChildren().add(preButton);
+      hBox.getChildren().add(sliButton);
+  	return hBox;
+  }//end getHBox()
+	
+  
+  
+
+/**
+   * The main method is only needed for the IDE with limited
+   * JavaFX support. Not needed for running from the command line.
+   */
+  public static void main(String[] args) {
+    launch(args);
+  }
+} 
+
+// Define a custom pane to hold a label in the center of the pane
+  
+class CustomPane extends StackPane {  //for the image
+	//TODO define an Image type variable for the pane.
+	ArrayList<Image> Photos;
+	ImageView imgView;
+	Image image;
+	Image image2;
+	Image image3;
+	Image image4;
+	Image image5;
+	Image image6;
+	Image image7;
+	Image image8;
+	Image image9;
+	Image image10;
+	Image image11;
+	//maybe create a variable representing the current image index
+	
+		  public CustomPane(String title) {
+			  
+			    Photos = new ArrayList<Image>();
+			    
+			    this.image = new Image("file:Image/IMG_3238.jpg");
+			    this.image2 = new Image("file:Image/IMG_2665.jpg");
+			    this.image3 = new Image("file:Image/IMG_2127.jpg");
+			    this.image4 = new Image("file:Image/IMG_2100.jpg");
+			    this.image5 = new Image("file:Image/IMG_1039.jpg");
+			    this.image6 = new Image("file:Image/IMG_0805.jpg");
+			    this.image7 = new Image("file:Image/IMG_0773.jpg");
+			    this.image8 = new Image("file:Image/IMG_0722.jpg");
+			    this.image9 = new Image("file:Image/IMG_0721.jpg");
+			    this.image10 = new Image("file:Image/IMG_0158.jpg");
+			    this.image11 = new Image("file:Image/IMG_0058.jpg");
+			    
+			    //Add images to ArrayList.
+			    Photos.add(image);
+			    Photos.add(image2);
+			    Photos.add(image3);
+			    Photos.add(image4);
+			    Photos.add(image5);
+			    Photos.add(image6);
+			    Photos.add(image7);
+			    Photos.add(image8);
+			    Photos.add(image9);
+			    Photos.add(image10);
+			    Photos.add(image11);
+			    
+			this.imgView = new ImageView(image);    
+			imgView.setFitHeight(500);
+			imgView.setFitWidth(500);
+		    this.getChildren().add(imgView);  //add image instead of label
+		    
+	
+		    //	    setStyle("-fx-border-color: red"); //CSS attribute reference:http://www.w3school.com.cn/cssref/index.asp
+		    setStyle("-fx-border-color: green;-fx-background-color: green");
+		    setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
+		  }
+		  public void nextImage()
+		  {
+			 //TODO:  make it generic
+			  //current image index ==> current image index + 1
+			  //if already the last : ==> 0
+			  //make index variable
+			  //keep index variable
+			  //change index variable
+			  //imgView.setImage(image2);
+		
+//			  Photos.get(2);
+//			  Photos.get(3);
+//			  Photos.get(4);
+//			  Photos.get(5);
+//			  Photos.get(6);
+//			  Photos.get(7);
+//			  Photos.get(8);
+//			  Photos.get(9);
+//			  Photos.get(10);
+//			  Photos.get(11);
+			  
+			  
+		  }
+		  
+		  public void previousImage()
+		  {
+			  
+		  }
+}
